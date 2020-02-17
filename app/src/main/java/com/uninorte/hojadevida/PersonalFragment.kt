@@ -26,8 +26,6 @@ class PersonalFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         user = arguments!!.getParcelable("data")!!
-
-        view.findViewById<TextView>(R.id.textViewHobby).text = user.hobby
         view.findViewById<TextView>(R.id.textViewNombre).text = arguments!!.getString("nombre")!!
     }
 }

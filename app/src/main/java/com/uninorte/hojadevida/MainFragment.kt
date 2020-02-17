@@ -30,16 +30,18 @@ class MainFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        //return inflater.inflate(R.layout.fragment_main, container, false)
+        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_main,container, false)
+        return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        userPersonalModel = UserPersonalModel("Juanita Perez",20,"Estudiando", 2)
-        userPersonalModel2 = UserPersonalModel("Fernando Jimeno",35,"No estudiando", 42)
-        userPersonalModel3 = UserPersonalModel("laura Viloria",50,"Jugando", 12)
-        mBinding = DataBindingUtil.setContentView(this.requireActivity(), R.layout.fragment_main)
+        userPersonalModel = UserPersonalModel("Juanita Perez",20,"Estudiando", 2,R.mipmap.honoree_avatar)
+        //userPersonalModel2 = UserPersonalModel("Fernando Jimeno",35,"No estudiando", 42,R.mipmap.)
+        //userPersonalModel3 = UserPersonalModel("laura Viloria",50,"Jugando", 12)
+        //mBinding = DataBindingUtil.setContentView(this.requireActivity(), R.layout.fragment_main)
         mBinding.user = userPersonalModel;
 
         view.findViewById<Button>(R.id.button_Fernando).setOnClickListener(this)
