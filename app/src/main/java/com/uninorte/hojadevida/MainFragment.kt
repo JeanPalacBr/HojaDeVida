@@ -6,23 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.core.os.bundleOf
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.uninorte.hojadevida.databinding.FragmentMainBinding
 import com.uninorte.hojadevida.model.UserPersonalModel
+import com.uninorte.hojadevida.util.StringUtils
+
 
 /**
  * A simple [Fragment] subclass.
  */
-class MainFragment : Fragment(), View.OnClickListener {
+    class MainFragment : Fragment(), View.OnClickListener {
 
-    lateinit var navController: NavController
-    lateinit var userPersonalModel: UserPersonalModel
-    lateinit var userPersonalModel2: UserPersonalModel
-    lateinit var userPersonalModel3: UserPersonalModel
+    lateinit var user: UserPersonalModel
     lateinit var mBinding : FragmentMainBinding
 
     override fun onCreateView(
@@ -37,24 +34,15 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
-        userPersonalModel = UserPersonalModel("Juanita Perez",20,"Estudiando", 2,R.mipmap.honoree_avatar)
-        //userPersonalModel2 = UserPersonalModel("Fernando Jimeno",35,"No estudiando", 42,R.mipmap.)
-        //userPersonalModel3 = UserPersonalModel("laura Viloria",50,"Jugando", 12)
-        //mBinding = DataBindingUtil.setContentView(this.requireActivity(), R.layout.fragment_main)
-        mBinding.user = userPersonalModel;
+        user = arguments!!.getParcelable("data")!!
+        view.findViewById<TextView>(R.id.textView).text = user.name
+        view.findViewById<TextView>(R.id.textView2).text = user.Estado
+        view.findViewById<TextView>(R.id.textView3).text = StringUtils.formatAge(user.edad)
+        view.findViewById<ImageView>(R.id.imageView).setImageResource(user.imagen)
 
-        view.findViewById<Button>(R.id.button_Fernando).setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-       when(v!!.id){
-
-           R.id.button_Fernando -> {
-               val bundle = bundleOf("data" to userPersonalModel, "nombre" to userPersonalModel.name)
-               navController!!.navigate(R.id.action_mainFragment_to_personalFragment,bundle)
-           }
-
-       }
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
