@@ -7,6 +7,5 @@ import kotlinx.android.parcel.Parcelize
 class UserPersonalModel (val name: String ,
                          val edad : Int,
                          val Estado : String,
-                         val numeroHermanos: Int,
                          val imagen: Int) : Parcelable {
 }

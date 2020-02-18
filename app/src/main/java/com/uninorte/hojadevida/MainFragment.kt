@@ -19,7 +19,7 @@ import com.uninorte.hojadevida.util.StringUtils
  */
     class MainFragment : Fragment(), View.OnClickListener {
 
-    lateinit var user: UserPersonalModel
+    private lateinit var user: UserPersonalModel
     lateinit var mBinding : FragmentMainBinding
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ import com.uninorte.hojadevida.util.StringUtils
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         user = arguments!!.getParcelable("data")!!
-        view.findViewById<TextView>(R.id.textView).text = user.name
+        view.findViewById<TextView>(R.id.textView).text= user.name
         view.findViewById<TextView>(R.id.textView2).text = user.Estado
         view.findViewById<TextView>(R.id.textView3).text = StringUtils.formatAge(user.edad)
         view.findViewById<ImageView>(R.id.imageView).setImageResource(user.imagen)

@@ -37,9 +37,9 @@ class ButtonFragment : Fragment(),View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        userPersonalModel = UserPersonalModel("Juanita Perez",20,"Estudiando", 2, mipmap.honoree_avatar)
-        userPersonalModel2 = UserPersonalModel("Fernando Jimeno",35,"No estudiando", 42, mipmap.asmund_kahoot_avatar)
-        userPersonalModel3 = UserPersonalModel("laura Viloria",50,"Jugando", 12, mipmap.daria_trans)
+        userPersonalModel = UserPersonalModel("Juanita Perez",20,"Estudiando",  mipmap.honoree_avatar)
+        userPersonalModel2 = UserPersonalModel("Fernando Jimeno",35,"No estudiando",  mipmap.asmund_kahoot_avatar)
+        userPersonalModel3 = UserPersonalModel("laura Viloria",50,"Jugando", mipmap.daria_trans)
         view.findViewById<Button>(R.id.button_Fernando).setOnClickListener(this)
         view.findViewById<Button>(R.id.button_Juanita).setOnClickListener(this)
         view.findViewById<Button>(R.id.button_Laura).setOnClickListener(this)
@@ -51,21 +51,15 @@ class ButtonFragment : Fragment(),View.OnClickListener {
 
             R.id.button_Juanita -> {
                 val bundle = bundleOf("data" to userPersonalModel)
-                val NF = MainFragment()
-                val fragmentManager = activity!!.supportFragmentManager
-                val fragmentTransaction = fragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.buttonFragment, NF)
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.commit()
-                //navController.navigate(R.id.action_buttonFragment_to_mainFragment)
+                navController.navigate(R.id.action_buttonFragment_to_mainFragment, bundle)
             }
             button_Fernando -> {
                 val bundle = bundleOf("data" to userPersonalModel2)
-                navController.navigate(R.id.action_buttonFragment_to_mainFragment)
+                navController.navigate(R.id.action_buttonFragment_to_mainFragment, bundle)
             }
             R.id.button_Laura -> {
                 val bundle = bundleOf("data" to userPersonalModel3)
-                navController.navigate(R.id.action_buttonFragment_to_mainFragment)
+                navController.navigate(R.id.action_buttonFragment_to_mainFragment, bundle)
             }
 
         }
