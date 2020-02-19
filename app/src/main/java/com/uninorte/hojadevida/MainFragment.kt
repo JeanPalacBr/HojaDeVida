@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.uninorte.hojadevida.databinding.FragmentMainBinding
 import com.uninorte.hojadevida.model.UserPersonalModel
 import com.uninorte.hojadevida.util.StringUtils
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
 /**
@@ -36,11 +37,13 @@ import com.uninorte.hojadevida.util.StringUtils
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         user = arguments!!.getParcelable("data")!!
-        txt1 = view.findViewById<TextView>(R.id.textView)
-        txt1.setText(user.name)
-        view.findViewById<TextView>(R.id.textView2).text = user.Estado
-        view.findViewById<TextView>(R.id.textView3).text = StringUtils.formatAge(user.edad)
-        view.findViewById<ImageView>(R.id.imageView).setImageResource(user.imagen)
+        mBinding.user = user
+        //textView.text = user.name
+        //txt1 = view.findViewById<TextView>(R.id.textView)
+        //txt1.setText(user.name)
+        //view.findViewById<TextView>(R.id.textView2).text = user.Estado
+        //view.findViewById<TextView>(R.id.textView3).text = StringUtils.formatAge(user.edad)
+        //view.findViewById<ImageView>(R.id.imageView).setImageResource(user.imagen)
 
     }
 
